@@ -932,7 +932,6 @@ function renderQuiz() {
         <button 
             class="quiz-nav-button quiz-prev-button"
             onclick="prevQuestion()"
-            ${currentQuestion === 0 ? "disabled" : ""}
         >
             이전
         </button>
@@ -989,11 +988,12 @@ function renderResult() {
     <div class="result-hero-fixed">
         <div class="result-card-wrap">
         <img 
-            id="resultCardImage"
-            class="result-card-image" 
-            src="./images/${typeCardMap[typeCode] || "카드-D.png"}" 
-            alt="${result.name}"
-            onerror="this.onerror=null; this.src='./images/카드-D.png';"
+          id="resultCardImage"
+          class="result-card-image" 
+          src="./images/${typeCardMap[typeCode] || "카드-D.png"}" 
+          alt="${result.name}"
+          onload="updateResultHeroSpace()"
+          onerror="this.onerror=null; this.src='./images/카드-D.png';"
         />
         </div>
 
@@ -1044,9 +1044,8 @@ function renderResult() {
     if (!hero || !scrollArea) return;
 
     function updateHeroSpace() {
-      const heroHeight = hero.offsetHeight;
+      const heroHeight = Math.ceil(hero.getBoundingClientRect().height) + 16;
       app.style.setProperty("--result-hero-space", `${heroHeight}px`);
-      scrollArea.scrollTop = 0;
     }
 
     // 이미지가 이미 로드된 상태면 바로 계산
@@ -1524,4 +1523,15 @@ function saveResultImage() {
 
     document.body.removeChild(wrapper);
   });
+}
+
+function updateResultHeroSpace() {
+  const hero = document.querySelector(".result-hero-fixed");
+
+  if (!hero) return;
+
+  // 살짝 여유값 추가
+  const heroHeight = hero.offsetHeight + 8;
+
+  app.style.setProperty("--result-hero-space", `${heroHeight}px`);
 }

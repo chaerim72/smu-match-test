@@ -96,7 +96,7 @@ button {
   left: 50%;
   transform: translateX(-50%);
 
-  width: 70px;
+  width: 60px;
   height: auto;
   object-fit: contain;
 
@@ -106,13 +106,13 @@ button {
 /* 메인 타이틀: SMU MATCH TEST */
 .main-title {
   position: absolute;
-  top: 190px;
+  top: 175px;
   left: 0;
   right: 0;
 
   color: var(--white);
   text-align: center;
-  font-size: 36px;
+  font-size: 34px;
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: 0px;
@@ -125,13 +125,13 @@ button {
 .main-character {
   position: absolute;
 
-  width: 300px;
+  width: 280px;
   max-width: none;
   height: auto;
   object-fit: contain;
 
   right: -75px;
-  bottom: 50px;
+  bottom: 30px;
 
   transform: rotate(-23deg);
 
@@ -143,7 +143,7 @@ button {
   position: absolute;
   left: 24px;
   right: 24px;
-  bottom: calc(44px + var(--safe-bottom));
+  bottom: calc(25px + var(--safe-bottom));
 
   height: 70px;
   border-radius: 14px;
@@ -749,7 +749,7 @@ button {
   overflow: hidden;
   position: relative;
 
-  --result-hero-space: 560px;
+  --result-hero-space: 620px;
 }
 
 /* 상단 헤더 완전 고정 */
@@ -858,6 +858,7 @@ button {
 /* 파란 카드 이미지 */
 .result-card-wrap {
   width: 100%;
+  aspect-ratio: 352 / 424;
   border-radius: 36px;
   overflow: hidden;
   margin-bottom: 18px;
@@ -865,7 +866,9 @@ button {
 
 .result-card-image {
   width: 100%;
+  height: 100%;
   display: block;
+  object-fit: contain;
   border-radius: 36px;
   background: transparent;
 }
@@ -1115,12 +1118,6 @@ button {
 .quiz-next-button {
   background: var(--main-blue);
   color: var(--white);
-}
-
-.quiz-prev-button:disabled {
-  background: #f3f3f5;
-  color: #b8b8b8;
-  cursor: default;
 }
 
 /* =========================
