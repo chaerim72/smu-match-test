@@ -335,12 +335,12 @@ button {
 
 /* 질문지 상단 헤더 */
 .quiz-header {
-  height: 80px;
+  height: 50px;
   border-bottom: none;
   position: relative;
   background: var(--white);
   /* 헤더 안의 SMU MATCH TEST 위치 */
-  padding-top: 25px;
+  padding-top: 15px;
 
   text-align: center;
 }
@@ -348,7 +348,7 @@ button {
 /* 질문지 헤더 타이틀 */
 .quiz-header h1 {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   letter-spacing: -0.5px;
 }
@@ -368,7 +368,7 @@ button {
 /* 질문 진행바 전체 */
 .progress {
   position: absolute;
-  top: 80px;
+  top: 50px;
   left: 0;
   right: 0;
   bottom: -6px;
@@ -387,9 +387,9 @@ button {
 /* 진행 번호 숫자 */
 .question-count {
   position: absolute;
-  top: 96px;
-  right: 20px;
-  font-size: 16px;
+  top: 70px;
+  right: 15px;
+  font-size: 14px;
   font-weight: 800;
   color: #b8b8b8;
   letter-spacing: 1px;
@@ -400,7 +400,7 @@ button {
 }
 
 .quiz-content {
-  padding: 74px var(--side-padding) 130px;
+  padding: 88px var(--side-padding) 130px;
 }
 
 .question-number {
@@ -1223,7 +1223,7 @@ button {
 
 .quiz-content {
   position: absolute;
-  top: 86px;
+  top: 55px;
   left: 0;
   right: 0;
 

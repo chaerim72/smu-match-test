@@ -579,7 +579,7 @@ const questions = [
   {
     title: "디자인 결과물의 지향점에 대한 나의 가치관은?",
     highlight: "나의 가치관",
-    boldHighlight: "자인 결과물의 지향점",
+    boldHighlight: "디자인 결과물의 지향점",
     options: [
       {
         text: "실무에서 바로 쓰일 수 있는, 대중적이고 시장성이 높은 '기업가적 디자인'이 정답이다.",
