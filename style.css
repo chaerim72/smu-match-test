@@ -1304,3 +1304,24 @@ button {
   z-index: 2;
   pointer-events: auto;
 }
+
+/* 질문지 답변 */
+.answer-button {
+  word-break: keep-all;
+  overflow-wrap: normal;
+  line-break: strict;
+  text-align: center;
+}
+
+/* 결과 페이지 교수님 추천 카드 */
+.professor-result-text p {
+  word-break: keep-all;
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: -0.5px;
+}
+
+.professor-result-text strong {
+  word-break: keep-all;
+  white-space: nowrap;
+}
