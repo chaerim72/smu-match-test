@@ -970,7 +970,7 @@ function renderLoading() {
   `;
 }
 
-// 결과 페이지, 캡쳐기능 구역 지정
+// 결과 페이지
 function renderResult() {
   const score = getScore();
   const typeCode = getTypeCode(score);
@@ -981,42 +981,41 @@ function renderResult() {
   app.className = "phone result-page";
   app.innerHTML = `
     <header class="result-header">
-        <button class="quiz-back" onclick="goTo('quiz')">‹</button>
-        <h1>SMU MATCH TEST</h1>
+      <button class="quiz-back" onclick="goTo('quiz')">‹</button>
+      <h1>SMU MATCH TEST</h1>
     </header>
 
     <div class="result-hero-fixed">
-        <div class="result-card-wrap">
+      <div class="result-card-wrap">
         <img 
           id="resultCardImage"
           class="result-card-image" 
           src="./images/${typeCardMap[typeCode] || "카드-D.png"}" 
           alt="${result.name}"
-          onload="updateResultHeroSpace()"
           onerror="this.onerror=null; this.src='./images/카드-D.png';"
         />
-        </div>
+      </div>
 
-        <button class="save-card-button" onclick="saveTypeCardImage()">
+      <button class="save-card-button" onclick="saveTypeCardImage()">
         ⬇ 이미지 저장
-        </button>
+      </button>
     </div>
 
     <main class="result-scroll-area">
-        <section class="result-section">
+      <section class="result-section">
         <h2>나의 <span>유형</span>은?</h2>
 
         <div class="bars">
-            ${renderBar("D", "주도형", score.D)}
-            ${renderBar("i", "사교형", score.i)}
-            ${renderBar("S", "안정형", score.S)}
-            ${renderBar("C", "신중형", score.C)}
+          ${renderBar("D", "주도형", score.D)}
+          ${renderBar("i", "사교형", score.i)}
+          ${renderBar("S", "안정형", score.S)}
+          ${renderBar("C", "신중형", score.C)}
         </div>
 
         <div class="info-card">
-            <ul>
+          <ul>
             ${result.points.map((point) => `<li>${point}</li>`).join("")}
-            </ul>
+          </ul>
         </div>
 
         <h2 class="professor-title">나와 맞는 <span>교수님</span>은?</h2>
@@ -1032,73 +1031,9 @@ function renderResult() {
         )}
 
         <button class="restart-button" onclick="restart()">테스트 다시하기</button>
-        </section>
+      </section>
     </main>
-    `;
-
-  requestAnimationFrame(() => {
-    const hero = document.querySelector(".result-hero-fixed");
-    const image = document.getElementById("resultCardImage");
-    const scrollArea = document.querySelector(".result-scroll-area");
-
-    if (!hero || !scrollArea) return;
-
-    function updateHeroSpace() {
-      const heroHeight = Math.ceil(hero.getBoundingClientRect().height) + 16;
-      app.style.setProperty("--result-hero-space", `${heroHeight}px`);
-    }
-
-    // 이미지가 이미 로드된 상태면 바로 계산
-    if (image && image.complete) {
-      updateHeroSpace();
-    }
-
-    // 이미지 로드가 끝난 뒤 다시 정확히 계산
-    if (image) {
-      image.addEventListener("load", updateHeroSpace, { once: true });
-    }
-
-    // 한 번 더 보정
-    setTimeout(updateHeroSpace, 100);
-
-    // 카드 이미지 영역에서 마우스 휠을 굴려도 흰색 결과 영역이 스크롤되게 함
-    hero.addEventListener(
-      "wheel",
-      function (event) {
-        // 저장 버튼 위에서는 버튼 클릭/동작 방해하지 않기
-        if (event.target.closest(".save-card-button")) return;
-
-        event.preventDefault();
-        scrollArea.scrollTop += event.deltaY;
-      },
-      { passive: false },
-    );
-
-    // 모바일에서 카드 이미지 영역을 터치 드래그해도 스크롤되게 함
-    let startY = 0;
-
-    hero.addEventListener(
-      "touchstart",
-      function (event) {
-        startY = event.touches[0].clientY;
-      },
-      { passive: true },
-    );
-
-    hero.addEventListener(
-      "touchmove",
-      function (event) {
-        if (event.target.closest(".save-card-button")) return;
-
-        const currentY = event.touches[0].clientY;
-        const diff = startY - currentY;
-
-        scrollArea.scrollTop += diff;
-        startY = currentY;
-      },
-      { passive: true },
-    );
-  });
+  `;
 }
 
 function saveTypeCardImage() {
